@@ -69,12 +69,14 @@
 <script>
 import {
     DependentFormField,
+    FormEvents,
     HandlesValidationErrors
 } from 'laravel-nova'
 
 export default {
     mixins: [
         DependentFormField,
+        FormEvents,
         HandlesValidationErrors,
     ],
 
@@ -130,6 +132,10 @@ export default {
             }
             else {
                 this.selected.push(id)
+            }
+
+            if (this.field) {
+                Nova.$emit(this.getFieldAttributeValueEventName(this.field.attribute), this.selected)
             }
         },
 
