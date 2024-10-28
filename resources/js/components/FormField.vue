@@ -69,14 +69,12 @@
 <script>
 import {
     DependentFormField,
-    FormEvents,
     HandlesValidationErrors
 } from 'laravel-nova'
 
 export default {
     mixins: [
         DependentFormField,
-        FormEvents,
         HandlesValidationErrors,
     ],
 
