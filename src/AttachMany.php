@@ -21,7 +21,7 @@ class AttachMany extends Field
     use Authorizable,
         FormatsRelatableDisplayValues,
         Searchable,
-	    SupportsDependentFields;
+	SupportsDependentFields;
 
     /**
      * set component default height
