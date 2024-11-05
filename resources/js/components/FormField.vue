@@ -94,6 +94,11 @@ export default {
     methods: {
         setInitialValue() {
             this.retrieveData();
+
+            if (this.currentField.value) {
+                this.selected = this.currentField.value
+                Nova.$emit(this.getFieldAttributeValueEventName(this.field.attribute), this.selected)
+            }
         },
 
         retrieveData(keepSelected=false) {

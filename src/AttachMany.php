@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Laravel\Nova\Authorizable;
+use Laravel\Nova\Fields\SupportsDependentFields;
 use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\Searchable;
 use Laravel\Nova\Util;
@@ -19,7 +20,8 @@ class AttachMany extends Field
 {
     use Authorizable,
         FormatsRelatableDisplayValues,
-        Searchable;
+        Searchable,
+	SupportsDependentFields;
 
     /**
      * set component default height
