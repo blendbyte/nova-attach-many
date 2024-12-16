@@ -41,7 +41,7 @@ class AttachController extends Controller
             ->where('attribute', $relationship)
             ->first();
 
-        $query = $field->resourceClass::newModel();
+        $query = $field->resourceClass::newModel()->query();
 
         return forward_static_call($this->associatableQueryCallable($request, $query), $request, $query, $field)->get()
             ->mapInto($field->resourceClass)

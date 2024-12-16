@@ -108,11 +108,11 @@ class AttachMany extends Field
 
                     // sync
                     if($pivot) {
-                        $changes = $model->$attribute()->syncWithPivotValues($filtered_values, $pivot); 
+                        $changes = $model->$attribute()->syncWithPivotValues($filtered_values, $pivot);
                     } else {
                         $changes = $model->$attribute()->sync($filtered_values);
                     }
-                    
+
 
                     $method = Str::camel($attribute) . 'Synced';
 
@@ -147,7 +147,7 @@ class AttachMany extends Field
         return $this;
     }
 
-    public function resolve($resource, $attribute = null)
+    public function resolve($resource, ?string $attribute = null): void
     {
         $this->withMeta([
             'height' => $this->height,
