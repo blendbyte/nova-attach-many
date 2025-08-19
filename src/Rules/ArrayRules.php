@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 class ArrayRules implements Rule
 {
     public $rules = [];
+    public $message;
 
     /**
      * Create a new rule instance.
