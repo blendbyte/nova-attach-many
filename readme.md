@@ -1,21 +1,25 @@
 # Nova Attach Many
 
-Belongs To Many create & edit form UI for Nova. Enables attaching relationships easily and includes validation.
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/blendbyte/nova-attach-many.svg?style=flat-square)](https://packagist.org/packages/blendbyte/nova-attach-many)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
+
+BelongsToMany create & edit form UI for Laravel Nova. Enables attaching relationships easily and includes validation.
+
+Forked from [dillingham/nova-attach-many](https://github.com/dillingham/nova-attach-many).
 
 ![attach-many](https://user-images.githubusercontent.com/29180903/52160651-be7fd580-2687-11e9-9ece-27332b3ce6bf.png)
 
-### Installation
+## Installation
 
 ```bash
 composer require blendbyte/nova-attach-many
 ```
 
-### Usage
+## Quick Start
 
 ```php
 use NovaAttachMany\AttachMany;
-```
-```php
+
 public function fields(Request $request)
 {
     return [
@@ -30,19 +34,17 @@ You can explicitly define the relationship & Nova resource:
 AttachMany::make('Field Name', 'relationshipName', RelatedResource::class);
 ```
 
-### Pivot Values
-You can pass additional parameters for any pivot value.  
-For details, please check https://laravel.com/docs/9.x/eloquent-relationships#syncing-associations
+## Pivot Values
+
+You can pass additional parameters for any pivot value. See the Laravel docs on [syncing associations](https://laravel.com/docs/eloquent-relationships#syncing-associations) for details.
 
 ```php
 AttachMany::make('Field Name', 'relationshipName', RelatedResource::class, ['pivot_name' => value]);
 ```
 
-### Display on detail:
+## Display on Detail
 
-This package only provides the create / edit views that BelongsToMany does not.
-
-BelongsToMany should be used for displaying the table on detail views.
+This package only provides the create/edit views that BelongsToMany does not. Use BelongsToMany for displaying the table on detail views:
 
 ```php
 public function fields(Request $request)
@@ -54,44 +56,38 @@ public function fields(Request $request)
 }
 ```
 
-### Validation
+## Validation
 
-You can set min, max, size or custom rule objects
+You can set min, max, size or custom rule objects:
 
 ```php
 ->rules('min:5', 'max:10', 'size:10', new CustomRule)
 ```
 
-<img src="https://user-images.githubusercontent.com/29180903/52160802-9ee9ac80-2689-11e9-9657-80e3c0d83b27.png" width="75%" />
+![validation example](https://user-images.githubusercontent.com/29180903/52160802-9ee9ac80-2689-11e9-9657-80e3c0d83b27.png)
 
+## Options
 
-### Options
+| Method              | Description                        |
+|---------------------|------------------------------------|
+| `->showCounts()`    | Shows "selected / total"           |
+| `->showPreview()`   | Shows only selected items          |
+| `->hideToolbar()`   | Removes search & select all        |
+| `->height('500px')` | Set custom height                  |
+| `->fullWidth()`     | Set to full width                  |
+| `->showRefresh()`   | Request the resources again        |
+| `->showSubtitle()`  | Show the resource's subtitle       |
+| `->help('<b>Tip:</b> help text')` | Set the help text |
 
-Here are a few customization options
+![all options demo](https://user-images.githubusercontent.com/29180903/53781117-6978ee80-3ed5-11e9-8da4-d2f2408f1ffb.png)
 
-- `->showCounts()` Shows "selected/total"
-- `->showPreview()` Shows only selected
-- `->hideToolbar()` Removes search & select all
-- `->height('500px')` Set custom height
-- `->fullWidth()` Set to full width
-- `->showRefresh()` Request the resources again
-- `->showSubtitle()` Show the resource's subtitle
-- `->help('<b>Tip:</b> help text')` Set the help text
+## Relatable
 
-### All Options Demo
+The attachable resources will be filtered by `relatableQuery()`, so you can control which resources are available for attachment.
 
-<img src="https://user-images.githubusercontent.com/29180903/53781117-6978ee80-3ed5-11e9-8da4-d2f2408f1ffb.png" width="75%"/>
+## Being Notified of Changes
 
-### Relatable
-
-The attachable resources will be filtered by relatableQuery()
-So you can filter which resources are able to be attached
-
-### Being Notified of Changes
-
-You can add a method to the resource to be notified of the changes that have happened:
-
-The method must be a camel cased version of the attribute name, followed by `Synced`. For example:
+Add a method to the resource to be notified of sync changes. The method must be a camel-cased version of the attribute name, followed by `Synced`:
 
 ```php
 public function fields(Request $request)
@@ -100,20 +96,33 @@ public function fields(Request $request)
         AttachMany::make('Permissions'),
     ];
 }
-```
 
-```php
 public function permissionsSynced(array $changes)
 {
-    $changes['attached']; // An array of IDs of attached models
-    $changes['detached']; // An array of IDs of detached models
-    $changes['updated']; // An array of IDs of updated models
+    $changes['attached']; // IDs of attached models
+    $changes['detached']; // IDs of detached models
+    $changes['updated'];  // IDs of updated models
 }
 ```
 
+## Authorization
 
-### Authorization
-This field also respects policies: ie Role / Permission
-- RolePolicy: attachAnyPermission($user, $role)
-- RolePolicy: attachPermission($user, $role, $permission)
-- PermissionPolicy: viewAny($user)
+This field respects policies. For example, with a Role / Permission setup:
+
+- `RolePolicy`: `attachAnyPermission($user, $role)`
+- `RolePolicy`: `attachPermission($user, $role, $permission)`
+- `PermissionPolicy`: `viewAny($user)`
+
+---
+
+## Maintained by Blendbyte
+
+<a href="https://www.blendbyte.com">
+  <img src="https://avatars.githubusercontent.com/u/69378377?s=200&v=4" alt="Blendbyte" width="80" align="left" style="margin-right: 16px;">
+</a>
+
+This project is maintained by **[Blendbyte](https://www.blendbyte.com)** — a team of engineers with 20+ years of experience building cloud infrastructure, web applications, and developer tools. We use these packages in production ourselves and actively contribute to the open source ecosystem we rely on every day. Issues and PRs are always welcome.
+
+🌐 [blendbyte.com](https://www.blendbyte.com) · 📧 [hello@blendbyte.com](mailto:hello@blendbyte.com)
+
+<br clear="left">
