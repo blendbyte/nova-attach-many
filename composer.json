@@ -1,6 +1,6 @@
 {
     "name": "blendbyte/nova-attach-many",
-    "description": "Attach Many Nova field",
+    "description": "BelongsToMany attach UI for Laravel Nova — searchable, validatable, with sync notifications & policy support. Fork of dillingham/nova-attach-many, maintained for Nova 5.",
     "keywords": [
         "laravel",
         "nova"
