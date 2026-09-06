@@ -16,7 +16,7 @@ Please **do not** open a public GitHub issue for security vulnerabilities.
 Report privately via:
 
 - [GitHub Security Advisories](https://github.com/blendbyte/nova-attach-many/security/advisories/new)
-- Email: [hello@blendbyte.com](mailto:hello@blendbyte.com)
+- Email: [security@blendbyte.com](mailto:security@blendbyte.com)
 
 Include the affected version, a description of the issue, and steps to reproduce.
 
