@@ -2,6 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/blendbyte/nova-attach-many.svg?style=flat-square)](https://packagist.org/packages/blendbyte/nova-attach-many)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
+[![Plumb score](https://plumbphp.dev/badges/blendbyte/nova-attach-many/composite.svg)](https://plumbphp.dev/blendbyte/nova-attach-many)
 
 BelongsToMany create & edit form UI for Laravel Nova. Enables attaching relationships easily and includes validation.
 
